@@ -332,10 +332,14 @@
 
 - (void)setEnabled:(BOOL)enabled
 {
-  [super setEnabled:enabled];
-  
+  //Not calling super because it sruggled to re-enable things.
   self.toggleLayer.onTintColor = enabled ? self.onTintColor : self.disabledTintColor;
   [self.toggleLayer setNeedsDisplay];
+
+  for (UIGestureRecognizer *gesture in self.gestureRecognizers)
+  {
+    [gesture setEnabled:enabled];
+  }
 }
 
 - (void)setOn:(BOOL)newOn
