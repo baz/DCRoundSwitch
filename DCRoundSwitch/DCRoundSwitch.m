@@ -32,7 +32,7 @@
 @implementation DCRoundSwitch
 @synthesize outlineLayer, toggleLayer, knobLayer, clipLayer, ignoreTap;
 @synthesize on, onText, offText;
-@synthesize onTintColor;
+@synthesize onTintColor, disabledTintColor;
 
 #pragma mark -
 #pragma mark Init & Memory Managment
@@ -45,6 +45,7 @@
 	[clipLayer release];
 
 	[onTintColor release];
+  [disabledTintColor release];
 	[onText release];
 	[offText release];
 
@@ -328,6 +329,14 @@
 }
 
 #pragma mark Setters/Getters
+
+- (void)setEnabled:(BOOL)enabled
+{
+  [super setEnabled:enabled];
+  
+  self.toggleLayer.onTintColor = enabled ? self.onTintColor : self.disabledTintColor;
+  [self.toggleLayer setNeedsDisplay];
+}
 
 - (void)setOn:(BOOL)newOn
 {
