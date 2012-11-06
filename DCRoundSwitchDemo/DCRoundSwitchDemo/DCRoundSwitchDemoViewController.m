@@ -18,16 +18,6 @@
 @synthesize switch3;
 @synthesize longSwitch;
 
-- (void)dealloc
-{
-    [longSwitch release];
-    [fatSwitch release];
-	[switch1 release];
-	[switch2 release];
-	[switch3 release];
-
-	[super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
