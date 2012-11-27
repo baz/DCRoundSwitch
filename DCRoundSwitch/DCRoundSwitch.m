@@ -456,4 +456,26 @@
 	}
 }
 
+#pragma mark - Accessiblity
+
+- (BOOL)isAccessibilityElement {
+  return YES;
+}
+
+- (NSString *)accessibilityLabel {
+  return NSLocalizedString(@"On off switch", nil);
+}
+
+- (UIAccessibilityTraits)accessibilityTraits {
+  return UIAccessibilityTraitButton;
+}
+
+- (NSString *)accessibilityHint {
+  if (self.on) {
+    return NSLocalizedString(@"Change switch to %@", self.offText);
+  } else {
+    return NSLocalizedString(@"Change switch to %@", self.onText);
+  }
+}
+
 @end
