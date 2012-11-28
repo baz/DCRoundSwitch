@@ -344,6 +344,7 @@
 	on = newOn;
 	self.ignoreTap = YES;
 
+	[CATransaction begin];
 	[CATransaction setAnimationDuration:0.014];
 	self.knobLayer.gripped = YES;
 
@@ -398,6 +399,7 @@
 
 		[CATransaction commit];
 	}];
+	[CATransaction commit];
 }
 
 - (void)setOnTintColor:(UIColor *)anOnTintColor
